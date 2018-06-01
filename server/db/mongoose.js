@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const {
-  mongodbRemoteConnectionUrl
-} = require('./../../util/constants');
+  env
+} = require('./../env/env');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(mongodbRemoteConnectionUrl);
+mongoose.connect(env.mongodbUri);
 
 module.exports = {
   mongoose
