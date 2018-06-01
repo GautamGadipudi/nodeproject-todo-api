@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/ToDoApp');
+const {
+  mongodbConnectionUrl
+} = require('./../../util/constants');
 
-module.exports = {mongoose};
+mongoose.Promise = global.Promise;
+mongoose.connect(mongodbConnectionUrl);
+
+module.exports = {
+  mongoose
+};
