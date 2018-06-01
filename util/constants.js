@@ -2,5 +2,6 @@ const mongodbRemoteConnectionUrl = 'mongodb://gautamgadipudi:boom4boom@ds217138.
 const mongodbLocalConnectionUrl = 'mongodb://localhost:27017/ToDoApp'
 
 module.exports = {
-  mongodbConnectionUrl
+  mongodbRemoteConnectionUrl,
+  mongodbLocalConnectionUrl
 };
