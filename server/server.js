@@ -44,23 +44,36 @@ app.get('/todos', (req, res) => {
 app.get('/todos/:id', (req, res) => {
   var id = req.params.id;
   if (!ObjectId.isValid(id))
-    return res.status(404).send({
-      error: 'id not valid'
-    });
+    return res.status(404).send();
   Todo.findById(id).then((todo) => {
     if (todo) {
       res.send({
         todo
       });
     } else {
-      res.status(404).send({
-        error: 'The Id does not exist'
-      })
+      res.status(404).send();
     }
   }).catch((e) => {
     res.status(400).send();
-  })
-})
+  });
+});
+
+app.delete('/todos/:id', (req, res) => {
+  var id = req.params.id;
+  if (!ObjectId.isValid(id))
+    return res.status(404).send();
+  Todo.findByIdAndRemove(id).then((todo) => {
+    if (todo) {
+      res.send({
+        todo
+      });
+    } else {
+      return res.status(404).send();
+    }
+  }).catch((e) => {
+    res.status(400).send();
+  });
+});
 
 app.listen(port, () => {
   console.log('Listening on port: ' + port);

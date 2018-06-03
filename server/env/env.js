@@ -1,3 +1,3 @@
-const {env} = require('./heroku');
+const {env} = require('./local');
 
 module.exports = {env};
