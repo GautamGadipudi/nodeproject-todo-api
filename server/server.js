@@ -5,6 +5,7 @@ const {
   ObjectId
 } = require('mongodb');
 
+const config = require('./config/config');
 const {
   mongoose
 } = require('./db/mongoose');
@@ -16,7 +17,7 @@ const {
 } = require('./models/user');
 
 var app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
@@ -97,7 +98,9 @@ app.patch('/todos/:id', (req, res) => {
   }).then((todo) => {
     if (!todo)
       return res.status(404).send();
-    res.send({todo});
+    res.send({
+      todo
+    });
   }).catch((e) => {
     res.status(400).send();
   })
